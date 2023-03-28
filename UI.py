@@ -1,4 +1,5 @@
 import sys, time, threading, cv2
+import pygame
 try:
     from PyQt5.QtCore import Qt
     pyqt5 = True
@@ -47,6 +48,13 @@ class MyWindow(QMainWindow):
         self.vlayout.addWidget(self.textbox)
         self.central.setLayout(self.vlayout)
         self.setCentralWidget(self.central)
+
+        self.buttonGrid = QGridLayout()
+
+        self.buttonGrid.addWidget(QPushButton("Forward (W)"), 0, 1)
+        self.buttonGrid.addWidget(QPushButton("Backward (S)"), 1, 1)
+        self.buttonGrid.addWidget(QPushButton("Left (A)"), 1, 0)
+        self.buttonGrid.addWidget(QPushButton("Right (D)"), 1, 2)
  
         self.mainMenu = self.menuBar()      # Menu bar
         exitAction = QAction('&Exit', self)
@@ -148,4 +156,4 @@ class ImageWidget(QWidget):
 
 #from... whenever this commit happens, this code is shamelessly copied from the following:
 #https://iosoft.blog/2019/07/31/rpi-camera-display-pyqt-opencv/
-#As much as I wish I could spend the time figuring out how to fuck with the UI, right now I need a fast solution.
+#As much as I wish I could spend the time figuring out how to fuck with the UI, right now I need a fast solution. I'll be adding a second video display and a way to somehow visualize input, not sure how well that'll go
